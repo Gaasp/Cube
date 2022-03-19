@@ -2927,14 +2927,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Tags:
-  - Spawn1
+  - Spawn
   - central
   CreatesTags:
-  - Room1
-  - Platform1
+  - First_Room
+  - First_Platform
   Exits: {fileID: 8563731970012323620}
   Bounds: {fileID: 8563731970672009916}
-  DeadEndChance: 5
+  DeadEndChance: 0
 --- !u!1 &8563731970672009917
 GameObject:
   m_ObjectHideFlags: 0
