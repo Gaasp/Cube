@@ -1245,7 +1245,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Tags:
   - Room1
-  - central
+  - 
   CreatesTags:
   - Platform1
   Exits: {fileID: 1960751515774013013}
