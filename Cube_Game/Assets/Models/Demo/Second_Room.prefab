@@ -184,6 +184,8 @@ MonoBehaviour:
   CreatesTags:
   - First_Platform
   - Second_Platform
+  - Third_Room
+  - Mover
   Exits: {fileID: 1654893822075827585}
   Bounds: {fileID: 1654893821481404441}
   DeadEndChance: 20
