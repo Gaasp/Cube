@@ -10,6 +10,7 @@ public class Points : MonoBehaviour
         Text score;
     public void Start()
     {
+        //PointsCube = GameObject.Find("Point");
         score = GetComponent<Text>();
     }
     private void OnTriggerEnter(Collider other)
