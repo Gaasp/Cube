@@ -3388,7 +3388,6 @@ MonoBehaviour:
   - Third_Room
   - Second_Room
   - Second_Platform
-  - Mover
   Exits: {fileID: 8563731970012323620}
   Bounds: {fileID: 8563731970672009916}
   DeadEndChance: 0
