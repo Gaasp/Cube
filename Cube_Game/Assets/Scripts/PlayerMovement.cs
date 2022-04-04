@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Audio;
 public class PlayerMovement : MonoBehaviour
 {
     public Transform pivot;
@@ -185,14 +185,17 @@ public class PlayerMovement : MonoBehaviour
        
         if (Input.GetKeyDown(KeyCode.W))
         {
+            
             if (CanMove(Vector3.forward))
             {
                 StartCoroutine(MoveForward());
+                
             }
             else if (CanMoveUp(Vector3.forward))
             {
                 StartCoroutine(MoveUpForward());
             }
+            
         }
         else if (Input.GetKeyDown(KeyCode.S))
         {
@@ -204,6 +207,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 StartCoroutine(MoveUpBackward());
             }
+           
         }
         else if (Input.GetKeyDown(KeyCode.D))
         {
@@ -215,23 +219,19 @@ public class PlayerMovement : MonoBehaviour
             {
                 StartCoroutine(MoveUpLeft());
             }
+            
         }
         else if (Input.GetKeyDown(KeyCode.A))
         {
             if (CanMove(Vector3.left))
             {
                 StartCoroutine(MoveRight());
-                //FallDown1();
-
             }
             else if (CanMoveUp(Vector3.left))
             {
                 StartCoroutine(MoveUpRight());
-               
-                
             }
-
-
+          
         }
     }
         // Check if the player can move
@@ -269,8 +269,8 @@ public class PlayerMovement : MonoBehaviour
         courtineWork = true;
         yield return MoveInDirection(Quaternion.Euler(0, 0, -90));
             yield return MoveInDirection(Quaternion.Euler(0, 0, 0));
-        
-       courtineWork = false;
+       
+        courtineWork = false;
         }
         IEnumerator MoveUpLeft()
         { 
@@ -297,13 +297,14 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.rotation = rotation;
             yield return MoveRight();
-            transform.rotation = Quaternion.Euler(0, 0, 0);
+       
+        transform.rotation = Quaternion.Euler(0, 0, 0);
         }
 
         IEnumerator MoveLeft()
         {
             yield return MoveInDirection(Quaternion.Euler(0, 180, 0));
-        }
+    }
 
         IEnumerator MoveForward()
         {
@@ -318,10 +319,11 @@ public class PlayerMovement : MonoBehaviour
         IEnumerator MoveRight()
         {
 
-            yield return RotatePivotFrom0To90();
-            transform.position -= transform.right;
-            pivot.localRotation = Quaternion.Euler(0, 0, 0);
-       
+        yield return RotatePivotFrom0To90();
+        transform.position -= transform.right;
+        pivot.localRotation = Quaternion.Euler(0, 0, 0);
+        
+
     }
 
         IEnumerator RotatePivotFrom0To90()
@@ -331,9 +333,11 @@ public class PlayerMovement : MonoBehaviour
                 var newRotation = pivot.localRotation.eulerAngles.z + Time.deltaTime * 90 * 3f;
                 newRotation = Mathf.Clamp(newRotation, 0, 90);
                 pivot.localRotation = Quaternion.Euler(0, 0, newRotation);
-                yield return null;
+           
+            yield return null;
             }
-        }
+        FindObjectOfType<Audio_Manager>().Play("Audio_Cube");
+    }
 
         IEnumerator FallDown1()
         {
@@ -349,7 +353,7 @@ public class PlayerMovement : MonoBehaviour
         }
     
     void OnCollisionEnter(Collision other)
-    {
+    {  
         if (falling && (1 << other.gameObject.layer & walkableMask) == 0)
         {
             // Find a nearby vacant square to push us on to
