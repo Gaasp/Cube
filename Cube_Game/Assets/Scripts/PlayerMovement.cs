@@ -5,7 +5,7 @@ using UnityEngine.Audio;
 public class PlayerMovement : MonoBehaviour
 {
     public Transform pivot;
-
+    public GameObject meta;
     public int step = 9;
     public float speed = 0.01f;
     bool input = true;
@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
     Vector3 targetPosition;
     Vector3 startPosition;
     bool moving;
-
+   
     Vector3 xOffset;
     Vector3 yOffset;
     Vector3 zOffset;
@@ -49,6 +49,10 @@ public class PlayerMovement : MonoBehaviour
     bool falling;
     float targetFallHeight;
     bool courtineWork = false;
+    private void Start()
+    {
+        meta = GameObject.Find("Level/Meta/Meta/Finnish");
+    }
     void Update()
     {
         // Set the ray positions every frame
@@ -181,58 +185,60 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
         }
-        if (Time.timeScale == 1)
-        {
-            if (Input.GetKeyDown(KeyCode.W))
+      
+            if (Time.timeScale == 1)
             {
+                if (Input.GetKeyDown(KeyCode.W))
+                {
 
-                if (CanMove(Vector3.forward))
-                {
-                    StartCoroutine(MoveForward());
+                    if (CanMove(Vector3.forward))
+                    {
+                        StartCoroutine(MoveForward());
+
+                    }
+                    else if (CanMoveUp(Vector3.forward))
+                    {
+                        StartCoroutine(MoveUpForward());
+                    }
 
                 }
-                else if (CanMoveUp(Vector3.forward))
+                else if (Input.GetKeyDown(KeyCode.S))
                 {
-                    StartCoroutine(MoveUpForward());
-                }
+                    if (CanMove(Vector3.back))
+                    {
+                        StartCoroutine(MoveBackward());
+                    }
+                    else if (CanMoveUp(Vector3.back))
+                    {
+                        StartCoroutine(MoveUpBackward());
+                    }
 
-            }
-            else if (Input.GetKeyDown(KeyCode.S))
-            {
-                if (CanMove(Vector3.back))
-                {
-                    StartCoroutine(MoveBackward());
                 }
-                else if (CanMoveUp(Vector3.back))
+                else if (Input.GetKeyDown(KeyCode.D))
                 {
-                    StartCoroutine(MoveUpBackward());
-                }
+                    if (CanMove(Vector3.right))
+                    {
+                        StartCoroutine(MoveLeft());
+                    }
+                    else if (CanMoveUp(Vector3.right))
+                    {
+                        StartCoroutine(MoveUpLeft());
+                    }
 
-            }
-            else if (Input.GetKeyDown(KeyCode.D))
-            {
-                if (CanMove(Vector3.right))
-                {
-                    StartCoroutine(MoveLeft());
                 }
-                else if (CanMoveUp(Vector3.right))
+                else if (Input.GetKeyDown(KeyCode.A))
                 {
-                    StartCoroutine(MoveUpLeft());
-                }
+                    if (CanMove(Vector3.left))
+                    {
+                        StartCoroutine(MoveRight());
+                    }
+                    else if (CanMoveUp(Vector3.left))
+                    {
+                        StartCoroutine(MoveUpRight());
+                    }
 
-            }
-            else if (Input.GetKeyDown(KeyCode.A))
-            {
-                if (CanMove(Vector3.left))
-                {
-                    StartCoroutine(MoveRight());
                 }
-                else if (CanMoveUp(Vector3.left))
-                {
-                    StartCoroutine(MoveUpRight());
-                }
-
-            }
+            
         }
     }
         // Check if the player can move
@@ -370,16 +376,15 @@ public class PlayerMovement : MonoBehaviour
             }
             transform.position += direction;
         }
-        //private IEnumerator Start()
-        //{
-        //    while (true)
-        //    {
-        //        yield return Move90Forward();
-        //        StartCoroutine(Move90Forward());
-        //    }
-
-        //}
-
-
+      
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Finish")
+        {
+            Debug.Log("Meta");
+            Time.timeScale = 0f;
+            
+        }
     }
 }
