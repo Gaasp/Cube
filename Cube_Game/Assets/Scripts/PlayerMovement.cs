@@ -20,11 +20,11 @@ public class PlayerMovement : MonoBehaviour
     float rayOffsetY = 0.5f;
     [SerializeField]
     float rayOffsetZ = 0.5f;
-
+    public bool movement_on_off;
     Vector3 targetPosition;
     Vector3 startPosition;
     bool moving;
-   
+    public GameObject pause_text;
     Vector3 xOffset;
     Vector3 yOffset;
     Vector3 zOffset;
@@ -49,12 +49,15 @@ public class PlayerMovement : MonoBehaviour
     bool falling;
     float targetFallHeight;
     bool courtineWork = false;
+   
     private void Start()
     {
         meta = GameObject.Find("Level/Meta/Meta/Finnish");
+        pause_text = GameObject.Find("Pause_Text");
     }
     void Update()
     {
+        Debug.Log(movement_on_off);
         // Set the ray positions every frame
 
         yOffset = transform.position + Vector3.up * rayOffsetY;
@@ -184,65 +187,74 @@ public class PlayerMovement : MonoBehaviour
                     falling = true;
                 }
             }
+
         }
-      
-            if (Time.timeScale == 1)
-            {
-                if (Input.GetKeyDown(KeyCode.W))
-                {
-
-                    if (CanMove(Vector3.forward))
-                    {
-                        StartCoroutine(MoveForward());
-
-                    }
-                    else if (CanMoveUp(Vector3.forward))
-                    {
-                        StartCoroutine(MoveUpForward());
-                    }
-
-                }
-                else if (Input.GetKeyDown(KeyCode.S))
-                {
-                    if (CanMove(Vector3.back))
-                    {
-                        StartCoroutine(MoveBackward());
-                    }
-                    else if (CanMoveUp(Vector3.back))
-                    {
-                        StartCoroutine(MoveUpBackward());
-                    }
-
-                }
-                else if (Input.GetKeyDown(KeyCode.D))
-                {
-                    if (CanMove(Vector3.right))
-                    {
-                        StartCoroutine(MoveLeft());
-                    }
-                    else if (CanMoveUp(Vector3.right))
-                    {
-                        StartCoroutine(MoveUpLeft());
-                    }
-
-                }
-                else if (Input.GetKeyDown(KeyCode.A))
-                {
-                    if (CanMove(Vector3.left))
-                    {
-                        StartCoroutine(MoveRight());
-                    }
-                    else if (CanMoveUp(Vector3.left))
-                    {
-                        StartCoroutine(MoveUpRight());
-                    }
-
-                }
-            
+        if (movement_on_off == true)
+        {
+            move();
         }
+        if(Input.GetKeyDown(KeyCode.L))
+        {
+            movement_on_off = false;
+        }
+
     }
-        // Check if the player can move
-        bool CanMove(Vector3 direction)
+    public void move()
+    {
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+
+                if (CanMove(Vector3.forward))
+                {
+                    StartCoroutine(MoveForward());
+
+                }
+                else if (CanMoveUp(Vector3.forward))
+                {
+                    StartCoroutine(MoveUpForward());
+                }
+
+            }
+            else if (Input.GetKeyDown(KeyCode.S))
+            {
+                if (CanMove(Vector3.back))
+                {
+                    StartCoroutine(MoveBackward());
+                }
+                else if (CanMoveUp(Vector3.back))
+                {
+                    StartCoroutine(MoveUpBackward());
+                }
+
+            }
+            else if (Input.GetKeyDown(KeyCode.D))
+            {
+                if (CanMove(Vector3.right))
+                {
+                    StartCoroutine(MoveLeft());
+                }
+                else if (CanMoveUp(Vector3.right))
+                {
+                    StartCoroutine(MoveUpLeft());
+                }
+
+            }
+            else if (Input.GetKeyDown(KeyCode.A))
+            {
+                if (CanMove(Vector3.left))
+                {
+                    StartCoroutine(MoveRight());
+                }
+                else if (CanMoveUp(Vector3.left))
+                {
+                    StartCoroutine(MoveUpRight());
+                }
+
+            }
+    
+    }
+    // Check if the player can move
+    bool CanMove(Vector3 direction)
         {
             if (direction.z != 0)
             {

@@ -7,55 +7,67 @@ public class CameraMovement : MonoBehaviour
 	public Transform target;
 	public float smoothSpeed = 0.125f;
 	public Vector3 offset;
+   
 
+   
 
-	private void LateUpdate()
+    private void LateUpdate()
 	{
 		Vector3 desiredPosition = target.position + offset;
 		Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
 		transform.position = smoothedPosition;
+
+        
 	}
-	//[SerializeField]
-	//Transform target = null;
-	//[SerializeField]
-	//float speed = 1.0f;
-	//[SerializeField]
-	//float innerBuffer = 0.1f;
-	//[SerializeField]
-	//float outerBuffer = 1.5f;
-	//bool moving;
-	//Vector3 offset;
+   
+    private void Update()
+    {
+        
+    }
 
-	//void Start() {
-	//	offset = target.position + transform.position;
-	//}
+    
 
-	//void Update() {
-	//	Vector3 cameraTargetPosition = target.position + offset;
-	//	Vector3 heading = cameraTargetPosition - transform.position;
-	//	float distance = heading.magnitude;
-	//	Vector3 direction = heading / distance;
+    //[SerializeField]
+    //Transform target = null;
+    //[SerializeField]
+    //float speed = 1.0f;
+    //[SerializeField]
+    //float innerBuffer = 0.1f;
+    //[SerializeField]
+    //float outerBuffer = 1.5f;
+    //bool moving;
+    //Vector3 offset;
 
-	//	if (distance > outerBuffer)
-	//		moving = true;
+    //void Start() {
+    //	offset = target.position + transform.position;
+    //}
 
-	//	if (moving) {
-	//		if (distance > innerBuffer)
-	//			transform.position += direction * Time.deltaTime * speed * Mathf.Max(distance, 1f);
-	//		else {
-	//			transform.position = cameraTargetPosition;
-	//			moving = false;
-	//		}
-	//	}
-	//}
+    //void Update() {
+    //	Vector3 cameraTargetPosition = target.position + offset;
+    //	Vector3 heading = cameraTargetPosition - transform.position;
+    //	float distance = heading.magnitude;
+    //	Vector3 direction = heading / distance;
 
-	//   void OnDrawGizmos() {
-	//       Gizmos.color = Color.red;
-	//       Gizmos.DrawWireSphere(target.position + offset, innerBuffer);
-	//       Gizmos.DrawWireSphere(target.position + offset, outerBuffer);
+    //	if (distance > outerBuffer)
+    //		moving = true;
 
-	//       Gizmos.color = Color.white;
-	//       Gizmos.DrawWireSphere(transform.position, innerBuffer);
-	//   }
+    //	if (moving) {
+    //		if (distance > innerBuffer)
+    //			transform.position += direction * Time.deltaTime * speed * Mathf.Max(distance, 1f);
+    //		else {
+    //			transform.position = cameraTargetPosition;
+    //			moving = false;
+    //		}
+    //	}
+    //}
+
+    //   void OnDrawGizmos() {
+    //       Gizmos.color = Color.red;
+    //       Gizmos.DrawWireSphere(target.position + offset, innerBuffer);
+    //       Gizmos.DrawWireSphere(target.position + offset, outerBuffer);
+
+    //       Gizmos.color = Color.white;
+    //       Gizmos.DrawWireSphere(transform.position, innerBuffer);
+    //   }
 }
 
