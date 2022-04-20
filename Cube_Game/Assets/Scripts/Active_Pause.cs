@@ -35,20 +35,20 @@ public class Active_Pause : MonoBehaviour
         {
             if (pause)
             {
-               // Time.timeScale = 1f;
+                
                 pause = false;
                 playerMovement.movement_on_off = true;
                 cam.GetComponent<CameraMovement>().enabled = true;
             }
             else
             {
-                //Time.timeScale = 0f;
                 pause = true;
                 playerMovement.movement_on_off = false;
-               cam.GetComponent<CameraMovement>().enabled = false;
+                cam.GetComponent<CameraMovement>().enabled = false;
             }
         }
         Move();
+        //Zoom();
     }
     void Move()
     {
@@ -58,5 +58,24 @@ public class Active_Pause : MonoBehaviour
         Vector3 dir = transform.up * zInput + transform.right * xInput;
 
         transform.position += dir * moveSpeed * Time.deltaTime;
+    }
+    void Zoom()
+    {
+        float scrollInput = Input.GetAxis("Mouse ScrollWheel");
+        float dist = Vector3.Distance(transform.position, cam.transform.position);
+
+        if(dist<minZoomDist && scrollInput > 0.0f)
+        {
+            return;
+        }
+        else if(dist> maxZoomDist && scrollInput < 0.0f)
+        {
+            return;
+        }
+        cam.transform.position += cam.transform.forward * scrollInput * zoomSpeed;
+    }
+    public void FocusOnPossition(Vector3 pos)
+    {
+        transform.position = pos;
     }
 }

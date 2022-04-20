@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject meta;
     public int step = 9;
     public float speed = 0.01f;
-    bool input = true;
+    //bool input = true;
 
     [SerializeField]
     float moveSpeed = 0.25f;
@@ -33,8 +33,8 @@ public class PlayerMovement : MonoBehaviour
     Vector3 xAxisOriginA;
     Vector3 xAxisOriginB;
 
-    [SerializeField]
-    Transform cameraRotator = null;
+    //[SerializeField]
+    //Transform cameraRotator = null;
 
     [SerializeField]
     LayerMask walkableMask = 0;
@@ -57,7 +57,7 @@ public class PlayerMovement : MonoBehaviour
     }
     void Update()
     {
-        Debug.Log(movement_on_off);
+       
         // Set the ray positions every frame
 
         yOffset = transform.position + Vector3.up * rayOffsetY;
