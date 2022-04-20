@@ -31,6 +31,7 @@ public class CameraMove : MonoBehaviour
         {
             Rotate();
         }
+
     }
 
     protected void Rotate()
@@ -48,6 +49,6 @@ public class CameraMove : MonoBehaviour
         }
 
     }
-
+    
 
 }

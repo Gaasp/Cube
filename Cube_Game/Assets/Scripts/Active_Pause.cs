@@ -4,22 +4,27 @@ using UnityEngine;
 
 public class Active_Pause : MonoBehaviour
 {
+    public float zoomSize = 5;
     public float moveSpeed;
     public float zoomSpeed;
-
+    
     public float minZoomDist;
     public float maxZoomDist;
-
+  
     public Camera cam;
     
     public bool pause = false;
+    private float DefaultCamSize = 3.6f;
 
+    public GameObject player;
     PlayerMovement playerMovement;
+    CameraMovement cameraMovement;
     private void Awake()
     {
         cam = Camera.main;
         
         playerMovement = GameObject.Find("Player").GetComponent<PlayerMovement>();
+        player = GameObject.Find("PlayerModel");
     }
     // Start is called before the first frame update
     void Start()
@@ -30,7 +35,9 @@ public class Active_Pause : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
+        Debug.Log(player.transform.position);
+
         if (Input.GetKeyDown(KeyCode.Space)) // Pause
         {
             if (pause)
@@ -48,8 +55,45 @@ public class Active_Pause : MonoBehaviour
             }
         }
         Move();
-        //Zoom();
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            ResetCamera();
+        }
+        
     }
+    private void LateUpdate()
+    {
+        Zoom();
+    }
+    void ResetCamera()
+    {
+        Vector3 reset = new Vector3(0.5f, 0.5f, 0f);
+        cam.orthographicSize = DefaultCamSize;
+        transform.position =  player.transform.position + reset;
+
+    }
+    void Zoom()
+    {
+        
+        float scrollInput = Input.GetAxis("Mouse ScrollWheel");
+     
+        if (scrollInput > 0.0f)
+        {
+            if (cam.orthographicSize >= minZoomDist)
+            {
+                cam.orthographicSize -= Time.deltaTime * zoomSpeed;
+            }
+        }
+        if(scrollInput < 0.0f)
+        {
+
+            if (cam.orthographicSize <= maxZoomDist)
+            {
+                cam.orthographicSize += Time.deltaTime * zoomSpeed;
+            }
+        }
+    }
+
     void Move()
     {
         float xInput = Input.GetAxis("Horizontal");
@@ -59,21 +103,7 @@ public class Active_Pause : MonoBehaviour
 
         transform.position += dir * moveSpeed * Time.deltaTime;
     }
-    void Zoom()
-    {
-        float scrollInput = Input.GetAxis("Mouse ScrollWheel");
-        float dist = Vector3.Distance(transform.position, cam.transform.position);
-
-        if(dist<minZoomDist && scrollInput > 0.0f)
-        {
-            return;
-        }
-        else if(dist> maxZoomDist && scrollInput < 0.0f)
-        {
-            return;
-        }
-        cam.transform.position += cam.transform.forward * scrollInput * zoomSpeed;
-    }
+   
     public void FocusOnPossition(Vector3 pos)
     {
         transform.position = pos;
