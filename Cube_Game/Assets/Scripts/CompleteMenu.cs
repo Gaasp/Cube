@@ -7,12 +7,14 @@ public class CompleteMenu : MonoBehaviour
     public GameObject canvas;
     public Canvas canvas2;
     public GameObject player;
+    private Scene scene;
     // Start is called before the first frame update
     void Start()
     {
         canvas = GameObject.Find("LevelComplete");
         canvas2 = canvas.GetComponent<Canvas>();
         player = GameObject.Find("Player");
+        scene = SceneManager.GetActiveScene();
     }
 
     // Update is called once per frame
@@ -22,7 +24,10 @@ public class CompleteMenu : MonoBehaviour
     }
     public void NextLevel()
     {
-        SceneManager.LoadScene("Demo_Scene");
+        if (scene.name == "Procedural_Level_First")
+            SceneManager.LoadScene("Demo_Scene");
+        if (scene.name == "Demo_Scene")
+            SceneManager.LoadScene("Procedural_Level_First");
         Time.timeScale = 1f;
     }
     public void Restart()
@@ -34,12 +39,17 @@ public class CompleteMenu : MonoBehaviour
     }
     public void Reset()
     {
-        SceneManager.LoadScene("Procedural_Level_First");
         Time.timeScale = 1f;
+        if (scene.name == "Procedural_Level_First")
+            SceneManager.LoadScene("Procedural_Level_First");
+        if (scene.name == "Demo_Scene")
+            SceneManager.LoadScene("Demo_Scene");
+        
     }
     public void Back_To_Menu()
     {
-        SceneManager.LoadScene("Menu");
         Time.timeScale = 1f;
+        SceneManager.LoadScene("Menu");
+        
     }
 }

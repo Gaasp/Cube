@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public int step = 9;
     public float speed = 0.01f;
     //bool input = true;
-
+    public bool isRolling = false;
     [SerializeField]
     float moveSpeed = 0.25f;
     [SerializeField]
@@ -24,7 +24,6 @@ public class PlayerMovement : MonoBehaviour
     Vector3 targetPosition;
     Vector3 startPosition;
     bool moving;
-    public GameObject pause_text;
     Vector3 xOffset;
     Vector3 yOffset;
     Vector3 zOffset;
@@ -33,8 +32,6 @@ public class PlayerMovement : MonoBehaviour
     Vector3 xAxisOriginA;
     Vector3 xAxisOriginB;
 
-    //[SerializeField]
-    //Transform cameraRotator = null;
 
     [SerializeField]
     LayerMask walkableMask = 0;
@@ -53,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         meta = GameObject.Find("Level/Meta/Meta/Finnish");
-        pause_text = GameObject.Find("Pause_Text");
+
     }
     void Update()
     {
@@ -201,7 +198,8 @@ public class PlayerMovement : MonoBehaviour
     }
     public void move()
     {
-            if (Input.GetKeyDown(KeyCode.W))
+            
+            if (Input.GetKey(KeyCode.W)&& !isRolling && !falling)
             {
 
                 if (CanMove(Vector3.forward))
@@ -215,7 +213,7 @@ public class PlayerMovement : MonoBehaviour
                 }
 
             }
-            else if (Input.GetKeyDown(KeyCode.S))
+            else if (Input.GetKey(KeyCode.S) && !isRolling && !falling)
             {
                 if (CanMove(Vector3.back))
                 {
@@ -227,7 +225,7 @@ public class PlayerMovement : MonoBehaviour
                 }
 
             }
-            else if (Input.GetKeyDown(KeyCode.D))
+            else if (Input.GetKey(KeyCode.D) && !isRolling && !falling)
             {
                 if (CanMove(Vector3.right))
                 {
@@ -239,7 +237,7 @@ public class PlayerMovement : MonoBehaviour
                 }
 
             }
-            else if (Input.GetKeyDown(KeyCode.A))
+            else if (Input.GetKey(KeyCode.A) && !isRolling && !falling)
             {
                 if (CanMove(Vector3.left))
                 {
@@ -314,6 +312,7 @@ public class PlayerMovement : MonoBehaviour
     }
     IEnumerator MoveInDirection(Quaternion rotation)
         {
+        
             transform.rotation = rotation;
             yield return MoveRight();
        
@@ -352,10 +351,12 @@ public class PlayerMovement : MonoBehaviour
                 var newRotation = pivot.localRotation.eulerAngles.z + Time.deltaTime * 90 * 3f;
                 newRotation = Mathf.Clamp(newRotation, 0, 90);
                 pivot.localRotation = Quaternion.Euler(0, 0, newRotation);
+            isRolling = true;
            
             yield return null;
             }
         FindObjectOfType<Audio_Manager>().Play("Audio_Cube");
+        isRolling = false;
     }
 
         IEnumerator FallDown1()

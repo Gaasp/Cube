@@ -992,36 +992,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1565162993}
   m_CullTransparentMesh: 1
---- !u!1 &1645561213
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1645561214}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1645561214
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1645561213}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1772951130
 GameObject:
   m_ObjectHideFlags: 0
@@ -1277,7 +1247,7 @@ Transform:
   m_Children:
   - {fileID: 972562326288455377}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &972562325701964732
 AudioSource:
@@ -1395,6 +1365,7 @@ MonoBehaviour:
   cam: {fileID: 0}
   pause: 0
   player: {fileID: 0}
+  active_Pause: {fileID: 0}
 --- !u!1 &972562326288455376
 GameObject:
   m_ObjectHideFlags: 0
@@ -2074,6 +2045,31 @@ PrefabInstance:
     - target: {fileID: 1033991340540083226, guid: e8f64ab7a002d9a4e939a1eb3f3f3a4f,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1383215866138334182, guid: e8f64ab7a002d9a4e939a1eb3f3f3a4f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -97
+      objectReference: {fileID: 0}
+    - target: {fileID: 2768652487276846796, guid: e8f64ab7a002d9a4e939a1eb3f3f3a4f,
+        type: 3}
+      propertyPath: m_text
+      value: Free cam
+      objectReference: {fileID: 0}
+    - target: {fileID: 2768652487276846796, guid: e8f64ab7a002d9a4e939a1eb3f3f3a4f,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2768652487276846796, guid: e8f64ab7a002d9a4e939a1eb3f3f3a4f,
+        type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5644010669623113667, guid: e8f64ab7a002d9a4e939a1eb3f3f3a4f,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6667999982760359714, guid: e8f64ab7a002d9a4e939a1eb3f3f3a4f,

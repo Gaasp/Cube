@@ -19,6 +19,7 @@ public class Active_Pause : MonoBehaviour
     public GameObject player;
     PlayerMovement playerMovement;
     CameraMovement cameraMovement;
+    public GameObject active_Pause;
     private void Awake()
     {
         cam = Camera.main;
@@ -29,7 +30,7 @@ public class Active_Pause : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        active_Pause = GameObject.Find("Pause_Text");
     }
 
     // Update is called once per frame
@@ -42,13 +43,14 @@ public class Active_Pause : MonoBehaviour
         {
             if (pause)
             {
-                
+                active_Pause.GetComponent<Canvas>().enabled = false;
                 pause = false;
                 playerMovement.movement_on_off = true;
                 cam.GetComponent<CameraMovement>().enabled = true;
             }
             else
             {
+                active_Pause.GetComponent<Canvas>().enabled = true;
                 pause = true;
                 playerMovement.movement_on_off = false;
                 cam.GetComponent<CameraMovement>().enabled = false;

@@ -64,6 +64,7 @@ public class Pause_Menui : MonoBehaviour
     }
     public void Quit()
     {
+        Time.timeScale = 1f;
         Application.Quit();
     }
 }

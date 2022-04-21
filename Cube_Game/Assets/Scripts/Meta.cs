@@ -14,9 +14,7 @@ public class Meta : MonoBehaviour
         canvas2 = canvas.GetComponent<Canvas>();
     } 
     void OnTriggerExit(Collider other)
-    {
-
-        Debug.Log("Finnish");
+    { 
         canvas2.enabled = true;
 
     }
