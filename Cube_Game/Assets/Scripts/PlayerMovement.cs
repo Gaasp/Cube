@@ -5,21 +5,14 @@ using UnityEngine.Audio;
 public class PlayerMovement : MonoBehaviour
 {
     public Transform pivot;
-    public GameObject meta;
     public int step = 9;
     public float speed = 0.01f;
-    //bool input = true;
     public bool isRolling = false;
-    [SerializeField]
-    float moveSpeed = 0.25f;
-    [SerializeField]
-    float rayLength = 1.4f;
-    [SerializeField]
-    float rayOffsetX = 0.5f;
-    [SerializeField]
-    float rayOffsetY = 0.5f;
-    [SerializeField]
-    float rayOffsetZ = 0.5f;
+    [SerializeField] float moveSpeed = 0.25f;
+    [SerializeField] float rayLength = 1.4f;
+    [SerializeField] float rayOffsetX = 0.5f;
+    [SerializeField] float rayOffsetY = 0.5f;
+    [SerializeField] float rayOffsetZ = 0.5f;
     public bool movement_on_off;
     Vector3 targetPosition;
     Vector3 startPosition;
@@ -33,23 +26,19 @@ public class PlayerMovement : MonoBehaviour
     Vector3 xAxisOriginB;
 
 
-    [SerializeField]
-    LayerMask walkableMask = 0;
+    [SerializeField] LayerMask walkableMask = 0;
 
-    [SerializeField]
-    LayerMask collidableMask = 0;
+    [SerializeField] LayerMask collidableMask = 0;
 
-    [SerializeField]
-    float maxFallCastDistance = 100f;
-    [SerializeField]
-    float fallSpeed = 30f;
+    [SerializeField] float maxFallCastDistance = 100f;
+    [SerializeField] float fallSpeed = 30f;
     bool falling;
     float targetFallHeight;
     bool courtineWork = false;
    
     private void Start()
     {
-        meta = GameObject.Find("Level/Meta/Meta/Finnish");
+        movement_on_off = true;
 
     }
     void Update()
@@ -391,13 +380,5 @@ public class PlayerMovement : MonoBehaviour
         }
       
     }
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.tag == "Finish")
-        {
-            Debug.Log("Meta");
-            Time.timeScale = 0f;
-            
-        }
-    }
+   
 }

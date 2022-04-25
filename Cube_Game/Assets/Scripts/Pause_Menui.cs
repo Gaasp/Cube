@@ -8,6 +8,7 @@ public class Pause_Menui : MonoBehaviour
     public static bool Game_Pause = false;
     public GameObject player;
     public GameObject pauseMenu;
+    PlayerMovement playerMovement;
     private Scene scene;
     // Update is called once per frame
     void Update()
@@ -26,6 +27,7 @@ public class Pause_Menui : MonoBehaviour
     {
        scene = SceneManager.GetActiveScene();
        player = GameObject.Find("Player");
+       playerMovement = GameObject.Find("Player").GetComponent<PlayerMovement>();
     }
     public void Resume()
     {
@@ -35,6 +37,7 @@ public class Pause_Menui : MonoBehaviour
     }
     public void Restart()
     {
+        playerMovement.movement_on_off = true;
         player.transform.position = new Vector3(0f, 1f, 2f);
         Time.timeScale = 1f;
         Game_Pause = false;
@@ -48,6 +51,7 @@ public class Pause_Menui : MonoBehaviour
         if (scene.name == "Demo_Scene")
             SceneManager.LoadScene("Demo_Scene");
         Time.timeScale = 1f;
+        playerMovement.movement_on_off = true;
         Game_Pause = false;
     }
     void Pause()

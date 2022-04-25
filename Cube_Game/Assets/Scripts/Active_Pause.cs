@@ -20,10 +20,10 @@ public class Active_Pause : MonoBehaviour
     PlayerMovement playerMovement;
     CameraMovement cameraMovement;
     public GameObject active_Pause;
+   
     private void Awake()
     {
         cam = Camera.main;
-        
         playerMovement = GameObject.Find("Player").GetComponent<PlayerMovement>();
         player = GameObject.Find("PlayerModel");
     }
@@ -37,7 +37,7 @@ public class Active_Pause : MonoBehaviour
     void Update()
     {
 
-        Debug.Log(player.transform.position);
+       
 
         if (Input.GetKeyDown(KeyCode.Space)) // Pause
         {

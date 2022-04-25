@@ -8,9 +8,11 @@ public class CompleteMenu : MonoBehaviour
     public Canvas canvas2;
     public GameObject player;
     private Scene scene;
+    PlayerMovement playerMovement;
     // Start is called before the first frame update
     void Start()
     {
+        playerMovement = GameObject.Find("Player").GetComponent<PlayerMovement>();
         canvas = GameObject.Find("LevelComplete");
         canvas2 = canvas.GetComponent<Canvas>();
         player = GameObject.Find("Player");
@@ -29,9 +31,11 @@ public class CompleteMenu : MonoBehaviour
         if (scene.name == "Demo_Scene")
             SceneManager.LoadScene("Procedural_Level_First");
         Time.timeScale = 1f;
+        playerMovement.movement_on_off = true;
     }
     public void Restart()
     {
+        playerMovement.movement_on_off = true;
         canvas2.enabled = false;
         player.transform.position = new Vector3(0f, 1f, 2f);
         Time.timeScale = 1f;
@@ -39,6 +43,7 @@ public class CompleteMenu : MonoBehaviour
     }
     public void Reset()
     {
+        playerMovement.movement_on_off = true;
         Time.timeScale = 1f;
         if (scene.name == "Procedural_Level_First")
             SceneManager.LoadScene("Procedural_Level_First");

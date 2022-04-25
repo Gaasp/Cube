@@ -15,7 +15,7 @@ public class Points : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name == "Player")
+        if (other.gameObject.name == "PlayerModel")
         {
             scoreValue += 1;
             PointsCube.SetActive(false);
