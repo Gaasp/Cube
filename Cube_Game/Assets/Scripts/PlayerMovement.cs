@@ -35,7 +35,8 @@ public class PlayerMovement : MonoBehaviour
     bool falling;
     float targetFallHeight;
     bool courtineWork = false;
-   
+    public AudioSource source;
+    public AudioClip clip;
     private void Start()
     {
         movement_on_off = true;
@@ -344,7 +345,8 @@ public class PlayerMovement : MonoBehaviour
            
             yield return null;
             }
-        FindObjectOfType<Audio_Manager>().Play("Audio_Cube");
+        source.PlayOneShot(clip);
+        //FindObjectOfType<Audio_Manager>().Play("Audio_Cube");
         isRolling = false;
     }
 

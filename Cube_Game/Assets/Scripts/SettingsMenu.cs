@@ -3,9 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
-public class SettingsMenu : MonoBehaviour
+public class SettinsMenu : MonoBehaviour
 {
     public AudioMixer audioMixer;
+    //public Dropdown resolutionDropdown;
+    public TMPro.TMP_Dropdown resolutionDropdown;
+   
+   
     //Audio
     public void Set_Master_Volume(float master_volume)
     {
