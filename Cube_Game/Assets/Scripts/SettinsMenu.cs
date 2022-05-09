@@ -8,27 +8,8 @@ public class SettinsMenu : MonoBehaviour
     public AudioMixer audioMixer;
     //public Dropdown resolutionDropdown;
     public TMPro.TMP_Dropdown resolutionDropdown;
-    Resolution[] resolutions;
-    public void Start()
-    {
-       resolutions = Screen.resolutions;
-        resolutionDropdown.ClearOptions();
-        List<string> options = new List<string>();
-        int currentResolutionIndex = 0;
-        for(int i =0; i < resolutions.Length; i++)
-        {
-            string option = resolutions[i].width + "x" + resolutions[i].height;
-            options.Add(option);
-
-            if (resolutions[i].width == Screen.currentResolution.width && resolutions[i].height == Screen.currentResolution.height)
-            {
-                currentResolutionIndex = i;
-            }
-        }
-        resolutionDropdown.AddOptions(options);
-        resolutionDropdown.value = currentResolutionIndex;
-        resolutionDropdown.RefreshShownValue();
-    }
+   
+   
     //Audio
     public void Set_Master_Volume(float master_volume)
     {
@@ -57,9 +38,14 @@ public class SettinsMenu : MonoBehaviour
     }
 
     //Resolution
-    public void SetResolution (int resolutionIndex)
+    List<int> widths = new List<int>() { 568, 960, 1024, 1280, 1920 };
+    List<int> heights = new List<int>() { 320, 540, 768, 800, 1080 };
+    public void SetScreenSize(int index)
     {
-        Resolution resolution = resolutions[resolutionIndex];
-        Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
+        bool fullscreen = Screen.fullScreen;
+        int width = widths[index];
+        int height = heights[index];
+
+        Screen.SetResolution(width, height, fullscreen);
     }
 }

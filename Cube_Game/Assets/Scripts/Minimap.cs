@@ -4,18 +4,14 @@ using UnityEngine;
 
 public class Minimap : MonoBehaviour
 {
-    public Transform cam;
     public Transform player;
-    public float CamDistance;
 
-    // Start is called before the first frame update
-    void Start()
+    private void LateUpdate()
     {
-    }
+        Vector3 newPosition = player.position;
+        newPosition.y = transform.position.y;
+        transform.position = newPosition;
 
-    // Update is called once per frame
-    void Update()
-    {
-        cam.position = player.position + new Vector3(CamDistance, 5, 0);
+        
     }
 }
