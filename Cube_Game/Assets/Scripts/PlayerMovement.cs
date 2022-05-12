@@ -30,9 +30,9 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] LayerMask collidableMask = 0;
 
-    [SerializeField] float maxFallCastDistance = 100f;
+    [SerializeField] public float maxFallCastDistance = 100f;
     [SerializeField] float fallSpeed = 30f;
-    bool falling;
+    public bool falling;
     float targetFallHeight;
     bool courtineWork = false;
     public AudioSource source;
@@ -161,10 +161,7 @@ public class PlayerMovement : MonoBehaviour
                     if (hits[topCollider].distance > 1f)
                     {
                         targetFallHeight = transform.position.y - hits[topCollider].distance + 0.9f;
-                        //if(Input.GetKeyDown(KeyCode.W))
-                        //{
-                        //    falling = false;
-                        //}
+            
                         falling = true;
                     }
                 }
