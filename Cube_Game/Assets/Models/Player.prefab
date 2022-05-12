@@ -140,6 +140,7 @@ GameObject:
   - component: {fileID: 5372786354813131540}
   - component: {fileID: 4770518082297864870}
   - component: {fileID: -3408697442693709785}
+  - component: {fileID: 1955248464}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -206,20 +207,24 @@ MonoBehaviour:
   pivot: {fileID: 6222897015296677794}
   step: 9
   speed: 0.01
+  isRolling: 0
   moveSpeed: 5
   rayLength: 1.4
   rayOffsetX: 0.48
   rayOffsetY: 0.46
   rayOffsetZ: 0.48
-  cameraRotator: {fileID: 0}
+  movement_on_off: 1
   walkableMask:
     serializedVersion: 2
     m_Bits: 1024
   collidableMask:
     serializedVersion: 2
     m_Bits: 1025
-  maxFallCastDistance: 100
-  fallSpeed: 15
+  maxFallCastDistance: 15
+  fallSpeed: 10
+  falling: 0
+  source: {fileID: -3408697442693709785}
+  clip: {fileID: 8300000, guid: 99f20d8160949014986bbbe5412ec425, type: 3}
 --- !u!114 &4770518082297864870
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -242,9 +247,10 @@ AudioSource:
   m_GameObject: {fileID: 3426277292668188261}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  OutputAudioMixerGroup: {fileID: -3862287821407112159, guid: dc7de798b4a7ba843b1d9e6d5f6da3fe,
+    type: 2}
+  m_audioClip: {fileID: 8300000, guid: 99f20d8160949014986bbbe5412ec425, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -329,3 +335,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1955248464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3426277292668188261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d155a9889b45ab44394be87309c8e2d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 3426277292668188261}
+  gameOverMenu: {fileID: 0}
