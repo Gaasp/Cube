@@ -9,7 +9,7 @@ public class Points : MonoBehaviour
     public TMPro.TMP_Text scoreText;
     public GameObject PointsCube;
     
-    public static int scoreValue = 0;
+    public int scoreValue = 0;
         Text score;
     public void Start()
     {
@@ -31,5 +31,6 @@ public class Points : MonoBehaviour
     private void Update()
     {
         scoreText.text= "Score: " + scoreValue;
+       
     }
 }

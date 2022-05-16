@@ -8,10 +8,13 @@ public class Meta : MonoBehaviour
     public GameObject canvas;
     public Canvas canvas2;
     PlayerMovement playerMovement;
-
+    Points points;
+    Timer timeScript;
+   
     void Start()
     {
         playerMovement = GameObject.Find("Player").GetComponent<PlayerMovement>();
+        timeScript = GameObject.Find("Player").GetComponent<Timer>();
         canvas = GameObject.Find("LevelComplete");
         canvas2 = canvas.GetComponent<Canvas>();
     }
@@ -20,7 +23,11 @@ public class Meta : MonoBehaviour
         canvas2.enabled = true;
         other.isTrigger = true;
         playerMovement.movement_on_off = false;
-        
+        timeScript.Finnish();
+
+        Save_Load.instance.activeSave.saveTime = timeScript.timeAmmount;
+        //Save_Load.instance.activeSave.savePoints = points.scoreValue;
+        Save_Load.instance.Save();
     }
 
 }

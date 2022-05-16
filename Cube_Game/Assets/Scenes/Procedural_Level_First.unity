@@ -2682,13 +2682,14 @@ GameObject:
   - component: {fileID: 455867463}
   - component: {fileID: 455867462}
   - component: {fileID: 455867464}
+  - component: {fileID: 455867465}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &455867462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2724,7 +2725,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 455867461}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d155a9889b45ab44394be87309c8e2d3, type: 3}
   m_Name: 
@@ -2732,6 +2733,24 @@ MonoBehaviour:
   player: {fileID: 0}
   gameOverMenu: {fileID: 0}
   game_over_check: 0
+--- !u!114 &455867465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 455867461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd1b91ab0bf033b4598112acc6e4d6ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasLoaded: 0
+  activeSave:
+    saveLevelName: Level1
+    saveTime: 0
+    savePoints: 0
+    saveSeed: 0
 --- !u!1 &462672582
 GameObject:
   m_ObjectHideFlags: 0

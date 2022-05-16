@@ -6,8 +6,10 @@ public class Timer : MonoBehaviour
 {
     public TMPro.TMP_Text timeText;
     private float startTime;
-    private bool finished = false;
+    public float timeAmmount;
+    public bool finished = false;
     Game_Over game_Over;
+    float t;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +25,7 @@ public class Timer : MonoBehaviour
             startTime = Time.time;
             return;
         }
-        float t = Time.time - startTime;
+        t = Time.time - startTime;
         string minutes = ((int)t / 60).ToString();
         string seconds = (t % 60).ToString("f3");
         timeText.text = minutes + ":" + seconds;
@@ -31,7 +33,9 @@ public class Timer : MonoBehaviour
     public void Finnish()
     {
         finished = true;
+        timeAmmount = t;
         timeText.color = Color.yellow;
+        
     }
 
 }
