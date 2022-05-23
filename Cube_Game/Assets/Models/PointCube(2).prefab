@@ -104,13 +104,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2656829784261509050}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 29d8b4ea2b2d28b4b8771e3be03a4666, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PointsCube: {fileID: 2656829784261509050}
   scoreText: {fileID: 0}
+  PointsCube: {fileID: 2656829784261509050}
+  scoreValue: 10
+  hitPoints: 0
 --- !u!95 &2656829784261509024
 Animator:
   serializedVersion: 3

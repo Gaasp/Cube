@@ -2704,6 +2704,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 416899517}
   canvas2: {fileID: 0}
+  newTime: 0
+  oldTime: 0
 --- !u!4 &455867463
 Transform:
   m_ObjectHideFlags: 0
@@ -5074,6 +5076,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5372786354813131540, guid: 192a9e3fa0dd9bb468a9f115b0718072,
+        type: 3}
+      propertyPath: scoreValue
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 192a9e3fa0dd9bb468a9f115b0718072, type: 3}

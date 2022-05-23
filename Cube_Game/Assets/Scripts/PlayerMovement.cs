@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using TMPro;
 public class PlayerMovement : MonoBehaviour
 {
+    public TMPro.TMP_Text scoreText;
     public Transform pivot;
     public int step = 9;
     public float speed = 0.01f;
@@ -37,14 +39,17 @@ public class PlayerMovement : MonoBehaviour
     bool courtineWork = false;
     public AudioSource source;
     public AudioClip clip;
+    public int scoreValue = 0;
     private void Start()
     {
         movement_on_off = true;
+        scoreText = GameObject.Find("UI/Points").GetComponent<TextMeshProUGUI>();
 
     }
     void Update()
     {
        
+        scoreText.text = "Score: " + scoreValue;
         // Set the ray positions every frame
 
         yOffset = transform.position + Vector3.up * rayOffsetY;
@@ -379,5 +384,14 @@ public class PlayerMovement : MonoBehaviour
         }
       
     }
-   
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.name == "Point")
+        {
+            other.gameObject.SetActive(false);
+            scoreValue = scoreValue + 1;
+            
+        }
+    }
+
 }

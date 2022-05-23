@@ -9,7 +9,7 @@ public class Timer : MonoBehaviour
     public float timeAmmount;
     public bool finished = false;
     Game_Over game_Over;
-    float t;
+    public float t;
     // Start is called before the first frame update
     void Start()
     {
