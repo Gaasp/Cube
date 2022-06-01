@@ -12,6 +12,8 @@ public class Pause_Menui : MonoBehaviour
     PlayerMovement playerMovement;
     private Scene scene;
     public GameObject minimap_canvas;
+
+    Timer timer;
     // Update is called once per frame
     void Update()
     {
@@ -27,6 +29,8 @@ public class Pause_Menui : MonoBehaviour
     }
     void Start()
     {
+       
+        timer = GameObject.Find("Player").GetComponent<Timer>();
        scene = SceneManager.GetActiveScene();
        player = GameObject.Find("Player");
        playerMovement = GameObject.Find("Player").GetComponent<PlayerMovement>();
@@ -37,6 +41,8 @@ public class Pause_Menui : MonoBehaviour
         pauseMenu.SetActive(false);
         settingsMenu.SetActive(false);
         minimap_canvas.SetActive(true);
+        timer.timeText.gameObject.SetActive(true);
+        playerMovement.scoreText.gameObject.SetActive(true);
         Time.timeScale = 1f;
         Game_Pause = false;
     }
@@ -44,6 +50,8 @@ public class Pause_Menui : MonoBehaviour
     {
         pauseMenu.SetActive(true);
         minimap_canvas.SetActive(false);
+        timer.timeText.gameObject.SetActive(false);
+        playerMovement.scoreText.gameObject.SetActive(false);
         Time.timeScale = 0f;
         Game_Pause = true;
     }
@@ -54,6 +62,9 @@ public class Pause_Menui : MonoBehaviour
         Time.timeScale = 1f;
         Game_Pause = false;
         pauseMenu.SetActive(false);
+        minimap_canvas.SetActive(true);
+        timer.timeText.gameObject.SetActive(true);
+        playerMovement.scoreText.gameObject.SetActive(true);
 
     }
     public void Reset()
