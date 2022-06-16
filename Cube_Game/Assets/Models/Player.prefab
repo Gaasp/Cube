@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5231740193709628054}
   - component: {fileID: 5902780197123978436}
   - component: {fileID: 4193900866081583588}
+  - component: {fileID: 1778944387103933603}
   m_Layer: 0
   m_Name: PlayerModel
   m_TagString: Untagged
@@ -95,6 +96,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1778944387103933603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1770049506208180206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8439b86c4fbe82942a2a15a1a4105b6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: []
 --- !u!1 &2021638021212757759
 GameObject:
   m_ObjectHideFlags: 0
@@ -204,6 +218,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b907a4bc5ee42048b15f0364d271874, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreText: {fileID: 0}
   pivot: {fileID: 6222897015296677794}
   step: 9
   speed: 0.01
@@ -225,6 +240,7 @@ MonoBehaviour:
   falling: 0
   source: {fileID: -3408697442693709785}
   clip: {fileID: 8300000, guid: 99f20d8160949014986bbbe5412ec425, type: 3}
+  scoreValue: 10
 --- !u!114 &4770518082297864870
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -238,6 +254,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeText: {fileID: 0}
+  timeAmmount: 0
+  finished: 0
+  t: 0
 --- !u!82 &-3408697442693709785
 AudioSource:
   m_ObjectHideFlags: 0
@@ -349,3 +368,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 3426277292668188261}
   gameOverMenu: {fileID: 0}
+  game_over_check: 0

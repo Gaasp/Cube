@@ -4,35 +4,44 @@ using UnityEngine;
 
 public class CameraMove : MonoBehaviour
 {
+    public static CameraMove cameraMove;
     public GameObject targetObject;
-    private float targetAngle = 0;
+    public PlayerMovement playerMovement;
+    public GameObject player;
+    public float targetAngle = 0;
     const float rotationAmount = 1.0f;
+   float rotationAngle = 90f;
     // Start is called before the first frame update
     void Start()
     {
-
+        playerMovement = GameObject.Find("Player").GetComponent<PlayerMovement>();
+   
     }
 
     // Update is called once per frame
     void Update()
     {
+        
+            // Trigger functions if Rotate is requested
+            if (Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                targetAngle -= 90.0f;
 
-        // Trigger functions if Rotate is requested
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            targetAngle -= 90.0f;
-        }
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            targetAngle += 90.0f;
+
+            }
+            else if (Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                targetAngle += 90.0f;
+
+            }
+
+            if (targetAngle != 0)
+            {
+                Rotate();
+            }
+
         }
 
-        if (targetAngle != 0)
-        {
-            Rotate();
-        }
-
-    }
 
     protected void Rotate()
     {

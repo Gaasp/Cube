@@ -12,24 +12,32 @@ public class Pause_Menui : MonoBehaviour
     PlayerMovement playerMovement;
     private Scene scene;
     public GameObject minimap_canvas;
+    Game_Over game_Over;
 
     Timer timer;
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (game_Over.game_over_check == 1)
         {
-            if (Game_Pause)
+
+        }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
-                Resume();
+                if (Game_Pause)
+                {
+                    Resume();
+                }
+                else
+                    Pause();
             }
-            else
-                Pause();
         }
     }
     void Start()
     {
-       
+        game_Over = GameObject.Find("Player").GetComponent<Game_Over>();
         timer = GameObject.Find("Player").GetComponent<Timer>();
        scene = SceneManager.GetActiveScene();
        player = GameObject.Find("Player");
@@ -57,8 +65,32 @@ public class Pause_Menui : MonoBehaviour
     }
     public void Restart()
     {
+        if(scene.name == "Level 1")
+        {
+            SceneManager.LoadScene("Level 1");
+        }
+        if (scene.name == "Level 2")
+        {
+            SceneManager.LoadScene("Level 2");
+        }
+        if (scene.name == "Level 3")
+        {
+            SceneManager.LoadScene("Level 3");
+        }
+        if (scene.name == "Level 4")
+        {
+            SceneManager.LoadScene("Level 4");
+        }
+        if (scene.name == "Level 5")
+        {
+            SceneManager.LoadScene("Level 5");
+        }
+        if (scene.name == "Level 6")
+        {
+            SceneManager.LoadScene("Level 6");
+        }
         playerMovement.movement_on_off = true;
-        player.transform.position = new Vector3(0f, 1f, 2f);
+       // player.transform.position = new Vector3(0f, 1f, 2f);
         Time.timeScale = 1f;
         Game_Pause = false;
         pauseMenu.SetActive(false);
@@ -67,12 +99,20 @@ public class Pause_Menui : MonoBehaviour
         playerMovement.scoreText.gameObject.SetActive(true);
 
     }
-    public void Reset()
+    public void NextLevel()
     {
-        if (scene.name == "Procedural_Level_First")
-            SceneManager.LoadScene("Procedural_Level_First");
-        if (scene.name == "Demo_Scene")
-            SceneManager.LoadScene("Demo_Scene");
+        if (scene.name == "Level 1")
+            SceneManager.LoadScene("Level 2");
+        if (scene.name == "Level 2")
+            SceneManager.LoadScene("Level 3");
+        if (scene.name == "Level 3")
+            SceneManager.LoadScene("Level 4");
+        if (scene.name == "Level 4")
+            SceneManager.LoadScene("Level 5");
+        if (scene.name == "Level 5")
+            SceneManager.LoadScene("Level 6");
+        if (scene.name == "Level 6")
+            SceneManager.LoadScene("Menu");
         Time.timeScale = 1f;
         playerMovement.movement_on_off = true;
         Game_Pause = false;

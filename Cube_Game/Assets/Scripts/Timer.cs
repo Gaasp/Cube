@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class Timer : MonoBehaviour
 {
+    public static Timer timer;
     public TMPro.TMP_Text timeText;
     private float startTime;
     public float timeAmmount;

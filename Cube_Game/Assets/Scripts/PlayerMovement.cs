@@ -5,6 +5,7 @@ using UnityEngine.Audio;
 using TMPro;
 public class PlayerMovement : MonoBehaviour
 {
+    public static PlayerMovement playerMovement2;
     public TMPro.TMP_Text scoreText;
     public Transform pivot;
     public int step = 9;
@@ -26,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
     Vector3 zAxisOriginB;
     Vector3 xAxisOriginA;
     Vector3 xAxisOriginB;
-
+    
 
     [SerializeField] LayerMask walkableMask = 0;
 
@@ -390,6 +391,7 @@ public class PlayerMovement : MonoBehaviour
         {
             other.gameObject.SetActive(false);
             scoreValue = scoreValue + 1;
+           
             
         }
     }

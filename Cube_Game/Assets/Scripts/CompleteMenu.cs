@@ -26,31 +26,52 @@ public class CompleteMenu : MonoBehaviour
     }
     public void NextLevel()
     {
-        if (scene.name == "Procedural_Level_First")
-            SceneManager.LoadScene("Demo_Scene");
-        if (scene.name == "Demo_Scene")
-            SceneManager.LoadScene("Procedural_Level_First");
+        if (scene.name == "Level 1")
+            SceneManager.LoadScene("Level 2");
+        if (scene.name == "Level 2")
+            SceneManager.LoadScene("Level 3");
+        if (scene.name == "Level 3")
+            SceneManager.LoadScene("Level 4");
+        if (scene.name == "Level 5")
+            SceneManager.LoadScene("Level 6");
+        if (scene.name == "Level 6")
+            SceneManager.LoadScene("Menu");
         Time.timeScale = 1f;
         playerMovement.movement_on_off = true;
     }
     public void Restart()
     {
+        if (scene.name == "Level 1")
+        {
+            SceneManager.LoadScene("Level 1");
+        }
+        if (scene.name == "Level 2")
+        {
+            SceneManager.LoadScene("Level 2");
+        }
+        if (scene.name == "Level 3")
+        {
+            SceneManager.LoadScene("Level 3");
+        }
+        if (scene.name == "Level 4")
+        {
+            SceneManager.LoadScene("Level 4");
+        }
+        if (scene.name == "Level 5")
+        {
+            SceneManager.LoadScene("Level 5");
+        }
+        if (scene.name == "Level 6")
+        {
+            SceneManager.LoadScene("Level 6");
+        }
         playerMovement.movement_on_off = true;
         canvas2.enabled = false;
-        player.transform.position = new Vector3(0f, 1f, 2f);
+       
         Time.timeScale = 1f;
         
-    }
-    public void Reset()
-    {
-        playerMovement.movement_on_off = true;
-        Time.timeScale = 1f;
-        if (scene.name == "Procedural_Level_First")
-            SceneManager.LoadScene("Procedural_Level_First");
-        if (scene.name == "Demo_Scene")
-            SceneManager.LoadScene("Demo_Scene");
-        
-    }
+    }    
+    
     public void Back_To_Menu()
     {
         Time.timeScale = 1f;

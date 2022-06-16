@@ -20,7 +20,7 @@ public class Stats : MonoBehaviour
 
     public void Update()
     {
-        levelText.text = level;
+        //levelText.text = level;
         timeText.text = time.ToString();
         pointsText.text = points.ToString();
         seedText.text = seed.ToString();
@@ -29,12 +29,16 @@ public class Stats : MonoBehaviour
     {
         //if (Save_Load.instance.hasLoaded)
         //{
-            level = Save_Load.instance.activeSave.saveLevelName;
-            time = Save_Load.instance.activeSave.saveTime;
-            points = Save_Load.instance.activeSave.savePoints;
-            seed = Save_Load.instance.activeSave.saveSeed;
+        level = Save_Load.instance.activeSave.saveLevelName;
+        time = Save_Load.instance.activeSave.saveTime;
+        points = Save_Load.instance.activeSave.savePoints;
+        seed = Save_Load.instance.activeSave.saveSeed;
         //}
-     
+
+    }
+    public void Level1()
+    {
+      
     }
     
 }

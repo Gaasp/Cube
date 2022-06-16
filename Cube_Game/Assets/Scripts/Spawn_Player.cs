@@ -12,4 +12,8 @@ public class Spawn_Player : MonoBehaviour
         // Instantiate at position (0, 0, 0) and zero rotation.
         Instantiate(Player, new Vector3(0, 7, 2), Quaternion.identity);
     }
+    private void Update()
+    {
+        Debug.Log(gameObject);
+    }
 }

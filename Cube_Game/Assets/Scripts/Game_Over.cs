@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class Game_Over : MonoBehaviour
 {
     PlayerMovement playerMovement;
@@ -12,12 +12,14 @@ public class Game_Over : MonoBehaviour
     public GameObject gameOverMenu;
     Vector3 spawnLocation;
     public float game_over_check = 0;
+    private Scene scene;
     // Start is called before the first frame update
     private void Start()
     {
         playerMovement = GameObject.Find("Player").GetComponent<PlayerMovement>();
         cameraMovement = GameObject.Find("Camera").GetComponent<CameraMovement>();
         spawnLocation = new Vector3(0f, 5f, 2f);
+        scene = SceneManager.GetActiveScene();
     }
 
     // Update is called once per frame
@@ -35,8 +37,33 @@ public class Game_Over : MonoBehaviour
     }
     public void Restart()
     {
+
+        if (scene.name == "Level 1")
+        {
+            SceneManager.LoadScene("Level 1");
+        }
+        if (scene.name == "Level 2")
+        {
+            SceneManager.LoadScene("Level 2");
+        }
+        if (scene.name == "Level 3")
+        {
+            SceneManager.LoadScene("Level 3");
+        }
+        if (scene.name == "Level 4")
+        {
+            SceneManager.LoadScene("Level 4");
+        }
+        if (scene.name == "Level 5")
+        {
+            SceneManager.LoadScene("Level 5");
+        }
+        if (scene.name == "Level 6")
+        {
+            SceneManager.LoadScene("Level 6");
+        }
         game_over_check = 0;
-        player.transform.position = spawnLocation;
+        //player.transform.position = spawnLocation;
         cameraMovement.enabled = true;
         Time.timeScale = 1f;
         playerMovement.falling = false;
