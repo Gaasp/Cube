@@ -7,7 +7,9 @@ public class PlayerMovement : MonoBehaviour
 {
     public static PlayerMovement playerMovement2;
     public TMPro.TMP_Text scoreText;
+    public static CameraMove cameraMove;
     public Transform pivot;
+    public Camera camera;
     public int step = 9;
     public float speed = 0.01f;
     public bool isRolling = false;
@@ -45,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
     {
         movement_on_off = true;
         scoreText = GameObject.Find("UI/Points").GetComponent<TextMeshProUGUI>();
-
+        
     }
     void Update()
     {
@@ -64,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
         xAxisOriginB = yOffset - zOffset;
 
         // Draw Debug Rays
-
+        Debug.DrawLine(zAxisOriginA,Vector3.forward, Color.green, Time.deltaTime);
         Debug.DrawLine(
                 zAxisOriginA,
                 zAxisOriginA + Vector3.forward * rayLength,
@@ -189,13 +191,25 @@ public class PlayerMovement : MonoBehaviour
         }
 
     }
+
+    //private Vector3 prosto;
+    //private Vector3 tyl;
+    //private Vector3 lewo;
+    //private Vector3 prawo;
     public void move()
     {
-            
-            if (Input.GetKey(KeyCode.W)&& !isRolling && !falling)
-            {
+        //if (camera.transform.rotation.y == -45)
+        //{
+        //    var aasd = Vector3.forward;
+        //}
+        if (Input.GetKey(KeyCode.W) && !isRolling && !falling)
+        {
+            //if (camera.transform.rotation.y <= -45)
+            //{
+            //    prosto = Vector3.forward;
+            //}
 
-                if (CanMove(Vector3.forward))
+            if (CanMove(Vector3.forward)) //daj dam back
                 {
                     StartCoroutine(MoveForward());
 
@@ -319,7 +333,7 @@ public class PlayerMovement : MonoBehaviour
 
         IEnumerator MoveForward()
         {
-        yield return MoveInDirection(Quaternion.Euler(0, 90, 0));
+        yield return MoveInDirection(Quaternion.Euler(0, 90, 0)); //jak dam -90 to dziala tak jak chce
         }
 
         IEnumerator MoveBackward()
