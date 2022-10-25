@@ -5,9 +5,11 @@ using UnityEngine.Audio;
 using TMPro;
 public class PlayerMovement : MonoBehaviour
 {
+    public static GameObject rotate;
     public static PlayerMovement playerMovement2;
     public TMPro.TMP_Text scoreText;
     public static CameraMove cameraMove;
+    public static rotatio rotatio;
     public Transform pivot;
     public Camera camera;
     public int step = 9;
@@ -47,6 +49,7 @@ public class PlayerMovement : MonoBehaviour
     {
         movement_on_off = true;
         scoreText = GameObject.Find("UI/Points").GetComponent<TextMeshProUGUI>();
+        rotatio = GameObject.Find("Player/Pivot/PlayerModel/Rotation").GetComponent<rotatio>();
         
     }
     void Update()
@@ -198,18 +201,16 @@ public class PlayerMovement : MonoBehaviour
     //private Vector3 prawo;
     public void move()
     {
-        //if (camera.transform.rotation.y == -45)
-        //{
-        //    var aasd = Vector3.forward;
-        //}
-        if (Input.GetKey(KeyCode.W) && !isRolling && !falling)
+        if (rotatio.rotationLocal == 0)
         {
-            //if (camera.transform.rotation.y <= -45)
-            //{
-            //    prosto = Vector3.forward;
-            //}
+            if (Input.GetKey(KeyCode.W) && !isRolling && !falling)
+            {
+                //if (camera.transform.rotation.y <= -45)
+                //{
+                //    prosto = Vector3.forward;
+                //}
 
-            if (CanMove(Vector3.forward)) //daj dam back
+                if (CanMove(Vector3.forward)) //daj dam back
                 {
                     StartCoroutine(MoveForward());
 
@@ -256,7 +257,163 @@ public class PlayerMovement : MonoBehaviour
                 }
 
             }
-    
+        }
+        if (rotatio.rotationLocal == 90)
+        {
+            if (Input.GetKey(KeyCode.W) && !isRolling && !falling)
+            {
+                if (CanMove(Vector3.left)) //daj dam back
+                {
+                    StartCoroutine(MoveLeft());
+
+                }
+                else if (CanMoveUp(Vector3.left))
+                {
+                    StartCoroutine(MoveUpLeft());
+                }
+            }
+            if (Input.GetKey(KeyCode.S) && !isRolling && !falling)
+            {
+                if (CanMove(Vector3.right)) //daj dam back
+                {
+                    StartCoroutine(MoveRight());
+
+                }
+                else if (CanMoveUp(Vector3.right))
+                {
+                    StartCoroutine(MoveUpRight());
+                }
+            }
+            if (Input.GetKey(KeyCode.A) && !isRolling && !falling)
+            {
+                if (CanMove(Vector3.forward)) //daj dam back
+                {
+                    StartCoroutine(MoveForward());
+
+                }
+                else if (CanMoveUp(Vector3.forward))
+                {
+                    StartCoroutine(MoveUpForward());
+                }
+            }
+            if (Input.GetKey(KeyCode.D) && !isRolling && !falling)
+            {
+                if (CanMove(Vector3.back)) //daj dam back
+                {
+                    StartCoroutine(MoveBackward());
+
+                }
+                else if (CanMoveUp(Vector3.back))
+                {
+                    StartCoroutine(MoveUpBackward());
+                }
+            }
+        }
+        if (rotatio.rotationLocal == 180)
+        {
+            if (Input.GetKey(KeyCode.W) && !isRolling && !falling)
+            {
+                
+
+                if (CanMove(Vector3.back)) //daj dam back
+                {
+                    StartCoroutine(MoveBackward());
+
+                }
+                else if (CanMoveUp(Vector3.back))
+                {
+                    StartCoroutine(MoveUpBackward());
+                }
+
+            }
+            else if (Input.GetKey(KeyCode.S) && !isRolling && !falling)
+            {
+                if (CanMove(Vector3.forward))
+                {
+                    StartCoroutine(MoveForward());
+                }
+                else if (CanMoveUp(Vector3.forward))
+                {
+                    StartCoroutine(MoveUpForward());
+                }
+
+            }
+            else if (Input.GetKey(KeyCode.D) && !isRolling && !falling)
+            {
+                if (CanMove(Vector3.right))
+                {
+                    StartCoroutine(MoveRight());
+                }
+                else if (CanMoveUp(Vector3.right))
+                {
+                    StartCoroutine(MoveUpRight());
+                }
+
+            }
+            else if (Input.GetKey(KeyCode.A) && !isRolling && !falling)
+            {
+                if (CanMove(Vector3.left))
+                {
+                    StartCoroutine(MoveLeft());
+                }
+                else if (CanMoveUp(Vector3.left))
+                {
+                    StartCoroutine(MoveUpLeft());
+                }
+
+            }
+        }
+        if (rotatio.rotationLocal == 270)
+        {
+            if (Input.GetKey(KeyCode.W) && !isRolling && !falling)
+            {
+                if (CanMove(Vector3.right)) //daj dam back
+                {
+                    StartCoroutine(MoveRight());
+
+                }
+                else if (CanMoveUp(Vector3.right))
+                {
+                    StartCoroutine(MoveUpRight());
+                }
+            }
+            if (Input.GetKey(KeyCode.S) && !isRolling && !falling)
+            {
+                if (CanMove(Vector3.left)) //daj dam back
+                {
+                    StartCoroutine(MoveLeft());
+
+                }
+                else if (CanMoveUp(Vector3.left))
+                {
+                    StartCoroutine(MoveUpLeft());
+                }
+            }
+            if (Input.GetKey(KeyCode.A) && !isRolling && !falling)
+            {
+                if (CanMove(Vector3.back)) //daj dam back
+                {
+                    StartCoroutine(MoveBackward());
+
+                }
+                else if (CanMoveUp(Vector3.back))
+                {
+                    StartCoroutine(MoveUpBackward());
+                }
+            }
+            if (Input.GetKey(KeyCode.D) && !isRolling && !falling)
+            {
+                if (CanMove(Vector3.forward)) //daj dam back
+                {
+                    StartCoroutine(MoveForward());
+
+                }
+                else if (CanMoveUp(Vector3.back))
+                {
+                    StartCoroutine(MoveUpForward());
+                }
+            }
+        }
     }
     // Check if the player can move
     bool CanMove(Vector3 direction)
