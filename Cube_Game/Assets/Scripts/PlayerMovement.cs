@@ -45,6 +45,7 @@ public class PlayerMovement : MonoBehaviour
     public AudioSource source;
     public AudioClip clip;
     public int scoreValue = 0;
+    public float cos = 0.1f;
     private void Start()
     {
         movement_on_off = true;
@@ -213,11 +214,12 @@ public class PlayerMovement : MonoBehaviour
                 if (CanMove(Vector3.forward)) //daj dam back
                 {
                     StartCoroutine(MoveForward());
-
+                    source.PlayOneShot(clip);
                 }
                 else if (CanMoveUp(Vector3.forward))
                 {
                     StartCoroutine(MoveUpForward());
+                    StartCoroutine(soundUp());
                 }
 
             }
@@ -226,10 +228,12 @@ public class PlayerMovement : MonoBehaviour
                 if (CanMove(Vector3.back))
                 {
                     StartCoroutine(MoveBackward());
+                    source.PlayOneShot(clip);
                 }
                 else if (CanMoveUp(Vector3.back))
                 {
                     StartCoroutine(MoveUpBackward());
+                    StartCoroutine(soundUp());
                 }
 
             }
@@ -238,10 +242,12 @@ public class PlayerMovement : MonoBehaviour
                 if (CanMove(Vector3.right))
                 {
                     StartCoroutine(MoveLeft());
+                    source.PlayOneShot(clip);
                 }
                 else if (CanMoveUp(Vector3.right))
                 {
                     StartCoroutine(MoveUpLeft());
+                    StartCoroutine(soundUp());
                 }
 
             }
@@ -250,10 +256,12 @@ public class PlayerMovement : MonoBehaviour
                 if (CanMove(Vector3.left))
                 {
                     StartCoroutine(MoveRight());
+                    source.PlayOneShot(clip);
                 }
                 else if (CanMoveUp(Vector3.left))
                 {
                     StartCoroutine(MoveUpRight());
+                    StartCoroutine(soundUp());
                 }
 
             }
@@ -265,11 +273,13 @@ public class PlayerMovement : MonoBehaviour
                 if (CanMove(Vector3.left)) //daj dam back
                 {
                     StartCoroutine(MoveLeft());
+                    source.PlayOneShot(clip);
 
                 }
                 else if (CanMoveUp(Vector3.left))
                 {
                     StartCoroutine(MoveUpLeft());
+                    StartCoroutine(soundUp());
                 }
             }
             if (Input.GetKey(KeyCode.S) && !isRolling && !falling)
@@ -277,11 +287,13 @@ public class PlayerMovement : MonoBehaviour
                 if (CanMove(Vector3.right)) //daj dam back
                 {
                     StartCoroutine(MoveRight());
+                    source.PlayOneShot(clip);
 
                 }
                 else if (CanMoveUp(Vector3.right))
                 {
                     StartCoroutine(MoveUpRight());
+                    StartCoroutine(soundUp());
                 }
             }
             if (Input.GetKey(KeyCode.A) && !isRolling && !falling)
@@ -289,11 +301,13 @@ public class PlayerMovement : MonoBehaviour
                 if (CanMove(Vector3.forward)) //daj dam back
                 {
                     StartCoroutine(MoveForward());
+                    source.PlayOneShot(clip);
 
                 }
                 else if (CanMoveUp(Vector3.forward))
                 {
                     StartCoroutine(MoveUpForward());
+                    StartCoroutine(soundUp());
                 }
             }
             if (Input.GetKey(KeyCode.D) && !isRolling && !falling)
@@ -301,11 +315,12 @@ public class PlayerMovement : MonoBehaviour
                 if (CanMove(Vector3.back)) //daj dam back
                 {
                     StartCoroutine(MoveBackward());
-
+                    source.PlayOneShot(clip);
                 }
                 else if (CanMoveUp(Vector3.back))
                 {
                     StartCoroutine(MoveUpBackward());
+                    StartCoroutine(soundUp());
                 }
             }
         }
@@ -318,11 +333,13 @@ public class PlayerMovement : MonoBehaviour
                 if (CanMove(Vector3.back)) //daj dam back
                 {
                     StartCoroutine(MoveBackward());
+                    source.PlayOneShot(clip);
 
                 }
                 else if (CanMoveUp(Vector3.back))
                 {
                     StartCoroutine(MoveUpBackward());
+                    StartCoroutine(soundUp());
                 }
 
             }
@@ -331,10 +348,12 @@ public class PlayerMovement : MonoBehaviour
                 if (CanMove(Vector3.forward))
                 {
                     StartCoroutine(MoveForward());
+                    source.PlayOneShot(clip);
                 }
                 else if (CanMoveUp(Vector3.forward))
                 {
                     StartCoroutine(MoveUpForward());
+                    StartCoroutine(soundUp()); ;
                 }
 
             }
@@ -343,10 +362,12 @@ public class PlayerMovement : MonoBehaviour
                 if (CanMove(Vector3.right))
                 {
                     StartCoroutine(MoveRight());
+                    source.PlayOneShot(clip);
                 }
                 else if (CanMoveUp(Vector3.right))
                 {
                     StartCoroutine(MoveUpRight());
+                    StartCoroutine(soundUp());
                 }
 
             }
@@ -355,10 +376,12 @@ public class PlayerMovement : MonoBehaviour
                 if (CanMove(Vector3.left))
                 {
                     StartCoroutine(MoveLeft());
+                    source.PlayOneShot(clip);
                 }
                 else if (CanMoveUp(Vector3.left))
                 {
                     StartCoroutine(MoveUpLeft());
+                    StartCoroutine(soundUp());
                 }
 
             }
@@ -370,11 +393,13 @@ public class PlayerMovement : MonoBehaviour
                 if (CanMove(Vector3.right)) //daj dam back
                 {
                     StartCoroutine(MoveRight());
+                    source.PlayOneShot(clip);
 
                 }
                 else if (CanMoveUp(Vector3.right))
                 {
                     StartCoroutine(MoveUpRight());
+                    StartCoroutine(soundUp());
                 }
             }
             if (Input.GetKey(KeyCode.S) && !isRolling && !falling)
@@ -382,11 +407,13 @@ public class PlayerMovement : MonoBehaviour
                 if (CanMove(Vector3.left)) //daj dam back
                 {
                     StartCoroutine(MoveLeft());
+                    source.PlayOneShot(clip);
 
                 }
                 else if (CanMoveUp(Vector3.left))
                 {
                     StartCoroutine(MoveUpLeft());
+                    StartCoroutine(soundUp());
                 }
             }
             if (Input.GetKey(KeyCode.A) && !isRolling && !falling)
@@ -394,11 +421,12 @@ public class PlayerMovement : MonoBehaviour
                 if (CanMove(Vector3.back)) //daj dam back
                 {
                     StartCoroutine(MoveBackward());
-
+                    source.PlayOneShot(clip);
                 }
                 else if (CanMoveUp(Vector3.back))
                 {
                     StartCoroutine(MoveUpBackward());
+                    StartCoroutine(soundUp());
                 }
             }
             if (Input.GetKey(KeyCode.D) && !isRolling && !falling)
@@ -406,11 +434,12 @@ public class PlayerMovement : MonoBehaviour
                 if (CanMove(Vector3.forward)) //daj dam back
                 {
                     StartCoroutine(MoveForward());
-
+                    source.PlayOneShot(clip);
                 }
                 else if (CanMoveUp(Vector3.back))
                 {
                     StartCoroutine(MoveUpForward());
+                    StartCoroutine(soundUp());
                 }
             }
         }
@@ -518,8 +547,9 @@ public class PlayerMovement : MonoBehaviour
             isRolling = true;
            
             yield return null;
-            }
-        source.PlayOneShot(clip);
+            
+        }
+       
         //FindObjectOfType<Audio_Manager>().Play("Audio_Cube");
         isRolling = false;
     }
@@ -553,6 +583,7 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
             transform.position += direction;
+            
         }
       
     }
@@ -566,5 +597,9 @@ public class PlayerMovement : MonoBehaviour
             
         }
     }
-
+    IEnumerator soundUp()
+    {
+        yield return new WaitForSeconds(cos);
+        source.PlayOneShot(clip);
+    }
 }
