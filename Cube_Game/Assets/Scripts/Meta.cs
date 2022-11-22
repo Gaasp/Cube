@@ -30,7 +30,7 @@ public class Meta : MonoBehaviour
     {
         newTime = timeScript.t;
     }
-    void OnTriggerExit(Collider other)
+    void OnTriggerEnter(Collider other)
     {
         canvas2.enabled = true;
         other.isTrigger = true;
