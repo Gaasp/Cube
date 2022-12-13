@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5896294738cfb4147aa2f16d9759c271, type: 2}
+  - {fileID: 2100000, guid: 351b93c362053f14a885484bb546d765, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -108,7 +108,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8439b86c4fbe82942a2a15a1a4105b6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  material: []
+  colorBank: []
+  m: {fileID: 0}
+  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &2021638021212757759
 GameObject:
   m_ObjectHideFlags: 0
@@ -220,6 +222,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreText: {fileID: 0}
   pivot: {fileID: 6222897015296677794}
+  camera: {fileID: 0}
   step: 9
   speed: 0.01
   isRolling: 0
@@ -241,6 +244,7 @@ MonoBehaviour:
   source: {fileID: -3408697442693709785}
   clip: {fileID: 8300000, guid: 99f20d8160949014986bbbe5412ec425, type: 3}
   scoreValue: 10
+  cos: 0.1
 --- !u!114 &4770518082297864870
 MonoBehaviour:
   m_ObjectHideFlags: 0

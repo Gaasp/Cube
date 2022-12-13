@@ -194,6 +194,7 @@ public class PlayerMovement : MonoBehaviour
             movement_on_off = false;
         }
 
+        
     }
 
     //private Vector3 prosto;
@@ -206,12 +207,9 @@ public class PlayerMovement : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.W) && !isRolling && !falling)
             {
-                //if (camera.transform.rotation.y <= -45)
-                //{
-                //    prosto = Vector3.forward;
-                //}
+               
 
-                if (CanMove(Vector3.forward)) //daj dam back
+                if (CanMove(Vector3.forward)) 
                 {
                     StartCoroutine(MoveForward());
                     source.PlayOneShot(clip);
@@ -266,37 +264,37 @@ public class PlayerMovement : MonoBehaviour
 
             }
         }
-        if (rotatio.rotationLocal == 90)
+        else if (rotatio.rotationLocal == 90)
         {
             if (Input.GetKey(KeyCode.W) && !isRolling && !falling)
             {
-                if (CanMove(Vector3.left)) //daj dam back
+                if (CanMove(Vector3.right)) //daj dam back
                 {
                     StartCoroutine(MoveLeft());
                     source.PlayOneShot(clip);
 
                 }
-                else if (CanMoveUp(Vector3.left))
+                else if (CanMoveUp(Vector3.right))
                 {
                     StartCoroutine(MoveUpLeft());
                     StartCoroutine(soundUp());
                 }
             }
-            if (Input.GetKey(KeyCode.S) && !isRolling && !falling)
+            else if (Input.GetKey(KeyCode.S) && !isRolling && !falling)
             {
-                if (CanMove(Vector3.right)) //daj dam back
+                if (CanMove(Vector3.left)) //daj dam back
                 {
                     StartCoroutine(MoveRight());
                     source.PlayOneShot(clip);
 
                 }
-                else if (CanMoveUp(Vector3.right))
+                else if (CanMoveUp(Vector3.left))
                 {
                     StartCoroutine(MoveUpRight());
                     StartCoroutine(soundUp());
                 }
             }
-            if (Input.GetKey(KeyCode.A) && !isRolling && !falling)
+            else if (Input.GetKey(KeyCode.A) && !isRolling && !falling)
             {
                 if (CanMove(Vector3.forward)) //daj dam back
                 {
@@ -310,7 +308,7 @@ public class PlayerMovement : MonoBehaviour
                     StartCoroutine(soundUp());
                 }
             }
-            if (Input.GetKey(KeyCode.D) && !isRolling && !falling)
+            else if (Input.GetKey(KeyCode.D) && !isRolling && !falling)
             {
                 if (CanMove(Vector3.back)) //daj dam back
                 {
@@ -324,7 +322,7 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
         }
-        if (rotatio.rotationLocal == 180)
+       else if (rotatio.rotationLocal == 180)
         {
             if (Input.GetKey(KeyCode.W) && !isRolling && !falling)
             {
@@ -359,12 +357,12 @@ public class PlayerMovement : MonoBehaviour
             }
             else if (Input.GetKey(KeyCode.D) && !isRolling && !falling)
             {
-                if (CanMove(Vector3.right))
+                if (CanMove(Vector3.left))
                 {
                     StartCoroutine(MoveRight());
                     source.PlayOneShot(clip);
                 }
-                else if (CanMoveUp(Vector3.right))
+                else if (CanMoveUp(Vector3.left))
                 {
                     StartCoroutine(MoveUpRight());
                     StartCoroutine(soundUp());
@@ -373,12 +371,12 @@ public class PlayerMovement : MonoBehaviour
             }
             else if (Input.GetKey(KeyCode.A) && !isRolling && !falling)
             {
-                if (CanMove(Vector3.left))
+                if (CanMove(Vector3.right))
                 {
                     StartCoroutine(MoveLeft());
                     source.PlayOneShot(clip);
                 }
-                else if (CanMoveUp(Vector3.left))
+                else if (CanMoveUp(Vector3.right))
                 {
                     StartCoroutine(MoveUpLeft());
                     StartCoroutine(soundUp());
@@ -386,37 +384,37 @@ public class PlayerMovement : MonoBehaviour
 
             }
         }
-        if (rotatio.rotationLocal == 270)
+        else if (rotatio.rotationLocal == 270)
         {
             if (Input.GetKey(KeyCode.W) && !isRolling && !falling)
             {
-                if (CanMove(Vector3.right)) //daj dam back
+                if (CanMove(Vector3.left)) //daj dam back
                 {
                     StartCoroutine(MoveRight());
                     source.PlayOneShot(clip);
 
                 }
-                else if (CanMoveUp(Vector3.right))
+                else if (CanMoveUp(Vector3.left))
                 {
                     StartCoroutine(MoveUpRight());
                     StartCoroutine(soundUp());
                 }
             }
-            if (Input.GetKey(KeyCode.S) && !isRolling && !falling)
+          else if (Input.GetKey(KeyCode.S) && !isRolling && !falling)
             {
-                if (CanMove(Vector3.left)) //daj dam back
+                if (CanMove(Vector3.right)) //daj dam back
                 {
                     StartCoroutine(MoveLeft());
                     source.PlayOneShot(clip);
 
                 }
-                else if (CanMoveUp(Vector3.left))
+                else if (CanMoveUp(Vector3.right))
                 {
                     StartCoroutine(MoveUpLeft());
                     StartCoroutine(soundUp());
                 }
             }
-            if (Input.GetKey(KeyCode.A) && !isRolling && !falling)
+            else if (Input.GetKey(KeyCode.A) && !isRolling && !falling)
             {
                 if (CanMove(Vector3.back)) //daj dam back
                 {
@@ -429,7 +427,7 @@ public class PlayerMovement : MonoBehaviour
                     StartCoroutine(soundUp());
                 }
             }
-            if (Input.GetKey(KeyCode.D) && !isRolling && !falling)
+            else if (Input.GetKey(KeyCode.D) && !isRolling && !falling)
             {
                 if (CanMove(Vector3.forward)) //daj dam back
                 {
@@ -515,11 +513,11 @@ public class PlayerMovement : MonoBehaviour
         IEnumerator MoveLeft()
         {
             yield return MoveInDirection(Quaternion.Euler(0, 180, 0));
-    }
+        }
 
         IEnumerator MoveForward()
         {
-        yield return MoveInDirection(Quaternion.Euler(0, 90, 0)); //jak dam -90 to dziala tak jak chce
+        yield return MoveInDirection(Quaternion.Euler(0, 90, 0));
         }
 
         IEnumerator MoveBackward()

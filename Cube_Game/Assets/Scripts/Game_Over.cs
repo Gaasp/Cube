@@ -8,6 +8,7 @@ public class Game_Over : MonoBehaviour
     CameraMovement cameraMovement;
     Pause_Menui pause_Menui;
     float game_over_distanceY = -5;
+    float player_falling = -15;
     public GameObject player;
     public GameObject gameOverMenu;
     Vector3 spawnLocation;
@@ -28,9 +29,14 @@ public class Game_Over : MonoBehaviour
       
         if (player.transform.position.y < game_over_distanceY)
         {
+            
             gameOverMenu.SetActive(true);
             cameraMovement.enabled = false;
             game_over_check = 1;
+            if(player.transform.position.y < player_falling)
+            {
+                playerMovement.falling = false;
+            }
             //playerMovement.falling = false;
             //odlaczenie camery
         }

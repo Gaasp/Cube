@@ -16,9 +16,9 @@ public class rotatio : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        test();
+        rotation();
     }
-    private void test()
+    private void rotation()
     {
         if (rotationLocal == 360)
         {

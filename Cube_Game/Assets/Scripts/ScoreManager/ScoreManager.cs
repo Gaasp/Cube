@@ -26,13 +26,7 @@ public class ScoreManager : MonoBehaviour
             highTimer = 100000;
         }
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+ 
     void Update()
     {
         points = GameObject.Find("Player").GetComponent<PlayerMovement>().scoreValue;
