@@ -17,6 +17,6 @@ In this game, the player's goal is to pass the level in the fastest time with th
 
 ## Getting Started
 
-If you want to play the game just download from Releases section.
+If you want to play the game just download from Releases section and run Cube_Game.exe
 
 If you want to see what is inside, you need Unity Engine version 2020.3.25f1 and import project.
