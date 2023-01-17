@@ -2,7 +2,7 @@
 ## 
 
 
-**A short arcade game created by student for as an engineering project.**
+**A short arcade game created by student as an engineering thesis.**
 
 In this game, the player's goal is to pass the level in the fastest time with the most points. The main feature of this game is the way the dice-player moves around the board.
 
@@ -11,7 +11,7 @@ In this game, the player's goal is to pass the level in the fastest time with th
 ## Features
 
 - Six levels
-- Boards was generated with level generator
+- Boards generated with procedural level generator
 - Statistics record
 - A secret level that generates every time
 
