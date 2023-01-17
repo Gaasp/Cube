@@ -5,7 +5,9 @@
 **A short arcade game created by student for as an engineering project.**
 
 In this game, the player's goal is to pass the level in the fastest time with the most points. The main feature of this game is the way the dice-player moves around the board.
+
 ![N|Solid](https://i.imgur.com/vMpr8gz.png)
+
 ## Features
 
 - Six levels
